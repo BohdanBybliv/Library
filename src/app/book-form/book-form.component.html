@@ -1,0 +1,50 @@
+<div> 
+    <input type="number" class="form-control" name="id" [(ngModel)]="book.id" hidden/>
+    <div class="form-group">
+        <label>Title</label>
+        <input class="form-control" name="title" [(ngModel)]="book.title" />
+    </div>
+    <div class="form-group">
+        <label>Cover</label>
+        <input type="file" class="form-control" (change)="picked($event)" name="cover" accept="image/png, image/jpeg" [(ngModel)]="book.cover">
+    </div>
+    <div class="form-group">
+        <label>Genre</label>
+        <input class="form-control" name="genre" [(ngModel)]="book.genre" />
+    </div>
+    <div class="form-group">
+        <label>Author</label>
+        <input class="form-control" name="author" [(ngModel)]="book.author" />
+    </div>
+    <div class="form-group">
+        <label>Content</label>
+        <input class="form-control" name="content" [(ngModel)]="book.content" />
+    </div>
+    <div class="form-group">
+        <button class="btn btn-default" (click)="saveBook()">Save</button>
+    </div>
+</div>
+
+
+<table *ngIf="bookmodels">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Cover</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Rating</th>
+            <th>Reviews</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let book of bookmodels">
+            <td>{{ book.id }}</td>
+            <td><img src="{{'data:image/jpg;base64,' + book.cover}}" style="height: 50px;"/></td>
+            <td>{{ book.title }}</td>
+            <td>{{ book.author }}</td>
+            <td>{{ book.rating }}</td>
+            <td>{{ book.reviewsNumber }}</td>
+        </tr>
+    </tbody>
+</table> 
