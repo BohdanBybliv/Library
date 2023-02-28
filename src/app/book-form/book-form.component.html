@@ -1,32 +1,146 @@
-<div> 
-    <input type="number" class="form-control" name="id" [(ngModel)]="book.id" hidden/>
-    <div class="form-group">
-        <label>Title</label>
-        <input class="form-control" name="title" [(ngModel)]="book.title" />
+
+<div class="form-container"> 
+    <h4 id="form-label">{{ formLabel }}</h4>
+    <hr>
+    <div class="input-container">
+        <div class="fields">
+            <input type="number" class="form-control" name="id" [(ngModel)]="book.id" hidden/>
+            <div class="row">
+                <div class="col-25">
+                    <label>Title</label>
+                </div>
+                <div class="col-75">
+                    <input type="text" class="form-control" name="title" [(ngModel)]="book.title" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-25">
+                    <label>Cover</label>
+                </div>
+                <div class="col-75">
+                    <input type="file" class="form-control" (change)="picked($event)" name="cover" accept="image/png, image/jpeg">
+                    <!-- <input type="file" class="form-control" (change)="picked($event)" name="cover" accept="image/png, image/jpeg" [(ngModel)]="book.cover"> -->
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-25">
+                    <label>Genre</label>
+                </div>
+                <div class="col-75">
+                    <input type="text" class="form-control" name="genre" [(ngModel)]="book.genre" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-25">
+                    <label>Author</label>
+                </div>
+                <div class="col-75">
+                    <input type="text" class="form-control" name="author" [(ngModel)]="book.author" />
+                </div>
+            </div>
+            <!-- <div class="form-group">
+                <label>Title</label>
+                <input class="form-control" name="title" [(ngModel)]="book.title" />
+            </div> -->
+            <!-- <div class="form-group">
+                <label>Cover</label>
+                <input type="file" class="form-control" (change)="picked($event)" name="cover" accept="image/png, image/jpeg" [(ngModel)]="book.cover">
+            </div> -->
+            <!-- <div class="form-group">
+                <label>Genre</label>
+                <input class="form-control" name="genre" [(ngModel)]="book.genre" />
+            </div> -->
+            <!-- <div class="form-group">
+                <label>Author</label>
+                <input class="form-control" name="author" [(ngModel)]="book.author" />
+            </div> -->
+        </div>
+        
+        <div class="form-group" id="content">
+            <div class="col-25" style="margin-top: 20px;">
+                <label>Content</label>
+            </div>
+            <div class="col-75">
+                <textarea class="form-control" name="content" [(ngModel)]="book.content"></textarea>
+            </div>
+        </div>
     </div>
-    <div class="form-group">
-        <label>Cover</label>
-        <input type="file" class="form-control" (change)="picked($event)" name="cover" accept="image/png, image/jpeg" [(ngModel)]="book.cover">
+    
+    <div class="buttons">
+        <div>
+            <button class="button submit" (click)="saveBook()">Save</button>
+            <button class="button clear" (click)="clear()">Clear</button>
+        </div>
     </div>
-    <div class="form-group">
-        <label>Genre</label>
-        <input class="form-control" name="genre" [(ngModel)]="book.genre" />
-    </div>
-    <div class="form-group">
-        <label>Author</label>
-        <input class="form-control" name="author" [(ngModel)]="book.author" />
-    </div>
-    <div class="form-group">
-        <label>Content</label>
-        <input class="form-control" name="content" [(ngModel)]="book.content" />
-    </div>
-    <div class="form-group">
-        <button class="btn btn-default" (click)="saveBook()">Save</button>
+</div>
+
+<div class="book-list-button">
+    <button (click)="loadAllBooks()">All</button>
+    <button (click)="loadRecommendedBooks()">Recommended</button>
+</div>
+<div class="book-table">
+    <div *ngFor="let book of bookmodels" class="book-table-cell">
+        <div class="books-container">
+            <div class="book">
+                <input type="number" name="id" [(ngModel)]="book.id" hidden/>
+                <input name="cover" [(ngModel)]="book.cover" hidden/>
+                <div class="card-first">
+                    <img class="book-img" src="{{'data:image/jpg;base64,' + book.cover}}" alt="Cover Image"/>
+                </div>
+                <div class="card">
+                    <div class="card-second">
+                        <div>
+                            <h4 class="title-label">{{ book.title }}</h4>
+                        </div>
+                        <div class="book-buttons">
+                            <button class="details" (click)="details(book.id)"><i class="material-icons">pageview</i></button>
+                            <button class="edit" (click)="edit(book.id)"><i class="material-icons">edit</i></button>
+                        </div>
+                    </div>
+                    <div class="card-third">
+                        <p>Reviews: {{ book.reviewsNumber }}</p>
+                        <p>Rating: {{ book.rating }}</p>
+                    </div>
+                </div>
+                
+                <!-- <div class="card card-fourth">
+                    <div>
+                        <button class="details" (click)="saveBook()"><i class="material-icons">pageview</i></button>
+                        <button class="edit" (click)="saveBook()"><i class="material-icons">edit</i></button>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+        
     </div>
 </div>
 
 
-<table *ngIf="bookmodels">
+<!-- <div *ngFor="let book of bookmodels">
+    <div class="books-container">
+        <div class="book">
+            <div class="card card-first">
+                <img src="{{'data:image/jpg;base64,' + book.cover}}"/>
+            </div>
+            <div class="card card-second">
+                <p class="title-label">{{ book.title }}</p>
+            </div>
+            <div class="card card-third">
+                <p>Reviews: {{ book.reviewsNumber }}</p>
+                <p>Rating: {{ book.rating }}</p>
+            </div>
+            <div class="card card-fourth">
+                <div>
+                    <button class="details" (click)="saveBook()"><i class="material-icons">pageview</i></button>
+                    <button class="edit" (click)="saveBook()"><i class="material-icons">edit</i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div> -->
+
+<!-- <table *ngIf="bookmodels">
     <thead>
         <tr>
             <th>Id</th>
@@ -47,4 +161,4 @@
             <td>{{ book.reviewsNumber }}</td>
         </tr>
     </tbody>
-</table> 
+</table>  -->

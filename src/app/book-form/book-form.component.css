@@ -1,0 +1,270 @@
+/* @import url('https://unpkg.com/bootstrap@3.3.7/dist/css/bootstrap.min.css'); */
+
+.form-container{
+    height: 300px;
+    background-color: rgb(247, 243, 181);
+    border-radius: 8px;
+}
+
+.input-container{
+    height: 150px;
+    display: flex;
+    justify-content: space-around;
+}
+
+/* .fields{
+    height: 100%;
+} */
+
+.row{
+    height: 25%;
+    display: flex;
+    align-content: space-around;
+}
+
+.col-25 {
+    float: left;
+    width: 25%;
+    /* margin-top: 6px; */
+}
+  
+.col-75 {
+    float: left;
+    width: 75%;
+    /* margin-top: 6px; */
+}
+
+hr{
+    width: 97%;
+}
+
+#form-label{
+    padding-top: 20px;
+    padding-left: 20px;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.submit {
+    background-color: #47d74c;
+}
+
+.clear{
+    background-color: #4d6ae9;
+}
+
+.button{
+    border-radius: 8px;
+    border: none;
+    color: white;
+    height: 40px;
+    width: 100px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.buttons{
+    margin-top: 35px;
+}
+
+.buttons div{
+    text-align: center;
+}
+
+#content{
+    display: flex;
+}
+
+#content textarea{
+    max-height: 150px;
+    max-width: 500px;
+    min-height: 75px;
+    height: 90%;
+    width: 400px;
+    margin-right: 50px;
+}
+
+input[type=text], textarea {
+    width: 100%;
+    height: 75%;
+    border: 1px solid #ccc;
+    border-radius: 7px;
+    resize: vertical;
+}
+
+/*----------------all/recommended-------------*/
+.book-list-button{
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.book-list-button button{
+    height: 40px;
+    min-width: 60px;
+}
+
+.book-list-button button:focus{
+    background-color: #afda23;
+}
+/*-------------------books-----------*/
+.book-table{
+    display: flex;
+    flex-wrap: wrap;
+    border: 2px solid gray;
+    height: 250px;
+    overflow: auto;
+    background-color: rgb(255, 226, 196);
+}
+
+.book-table-cell{
+    width: 50%;
+}
+
+.books-container{
+    border: 2px solid gray;
+    border-radius: 8px;
+    /* min-width: 100%; */
+    width: 96%;
+    height: 100px;
+    margin: 2%;
+    background-color: blanchedalmond;
+}
+
+.book{
+    height: inherit;
+    display: flex;
+}
+
+.card{
+    width: 70%;
+}
+
+.card-first{
+    height: inherit;
+    width: 30%;
+    text-align: center;
+}
+
+.card-second{
+    height: 50%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.card-second h4{
+    margin-top: 10px;
+    margin-left: 25px;
+}
+
+.book-buttons{
+    margin-right: 2%;
+    margin-top: 2%;
+    border-radius: 8px;
+}
+
+.book-buttons button{
+     margin: 1px;
+}
+
+.card-third{
+    height: 50%;
+    display: flex;
+    align-items: flex-end;
+}
+
+.card-third p{
+    margin-left: 25px;
+}
+
+.book-img{
+    height: 90%;
+    object-fit: contain;
+    max-width: 90%;
+    margin: 3%;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+i{
+    font-size: 25px;;
+}
+
+/*--------------book------------------*/
+/* .book{
+    float: left;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin: 15px;
+    width: 40%;
+    padding-bottom: 15px;
+    padding-left: 15px;
+    border: 2px solid black;
+    height: 110px;
+}
+
+.title-label{
+    margin-left: 40%;
+}
+
+.card-first {
+    margin: auto;
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 3;
+    order: 1;
+    height: inherit;
+}
+
+.card-second {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    order: 2;
+}
+
+.card-third {
+    grid-column-start: 2;
+    grid-column-end: 4;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    order: 3;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.card-fourth{
+    grid-column-start: 3;
+    grid-column-end: 4;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    order: 4;
+}
+
+.card-fourth div{
+    float: right;
+    padding-right: 10px;
+    padding-top: 10px;
+}
+
+
+.book img{
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+}
+
+
+i{
+    font-size: 25px;;
+}
+
+.books-container{
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #4d6ae9;
+} */
