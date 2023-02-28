@@ -3,6 +3,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { BookCreationModel } from '../models/book-creation.model';
 import { BookModel } from '../models/book.model';
 import { BookService } from '../services/book.service';
+import { MatDialog } from '@angular/material/dialog';
+import { BookDetailsComponent } from '../book-details/book-details.component';
 
 @Component({
   selector: 'app-book-form',
@@ -14,36 +16,69 @@ export class BookFormComponent {
   book: BookCreationModel = new BookCreationModel(0, "", "", "", "", "");
   books: BookCreationModel[] = [];
   bookmodels: BookModel[] = [];
-  
+
+  formLabel: string = "Add Book";
   //imageSource: any;
   //imageSrc;
   //imageFile: any;
   
   //base64s
-  imageString!: string;
+  imageString: string = "";
 
-  constructor(private bookService: BookService) {
-    this.loadBooks();
+  constructor(private bookService: BookService,
+    public dialog: MatDialog) {
+    this.loadAllBooks();
    }
 
-  loadBooks(){
-    this.bookService.getBooks().subscribe({
-      next: (books: any) => {
-        this.bookmodels = books;
+  loadAllBooks(){
+    this.bookService.getAllBooks().subscribe({
+      next: (res: any) => {
+        this.bookmodels = res;
       }
     });
-    // this.bookmodels.forEach(element => {
-    //   element.coverImg = this.sanitizer.bypassSecurityTrustUrl(`data:image/png;base64, ${element.cover}`);
-    // });
+  }
+
+  loadRecommendedBooks(){
+    this.bookService.getRecommendedBooks().subscribe({
+      next: (res: any) => {
+        this.bookmodels = res;
+      }
+    })
   }
   
   saveBook(){
-    this.bookService.saveBook(new BookCreationModel(this.book.id, this.book.title, this.book.author, this.imageString, this.book.content, this.book.genre))
+    this.bookService.saveBook(new BookCreationModel(this.book.id, this.book.title, this.book.author, this.imageString == "" ? this.book.cover : this.imageString, this.book.content, this.book.genre))
             .subscribe({
               next: (res: any) => { 
-                if(res.isSuccess) this.loadBooks();
+                this.loadAllBooks();
+                this.clear();
               }
             })
+  }
+
+  clear(){
+    this.formLabel = "Add Book";
+    this.book = new BookCreationModel(0, "", "", "", "", "");
+  }
+
+  details(bookId: number){
+
+    this.dialog.open(BookDetailsComponent, {
+      width: '700px',
+      height: '660px',
+      data: {
+        bookId: bookId
+      }
+    })
+  }
+
+  edit(bookId: number){
+    this.formLabel = "Edit Book";
+    this.bookService.getBookById(bookId).subscribe({
+      next: (res: any) => {
+        this.book = res;
+      }
+    })
   }
 
   public picked(event: any) {

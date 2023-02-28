@@ -1,0 +1,44 @@
+<div class="container">
+    <h2 class="label">Details</h2>
+    <hr>
+
+    <div class="main-container">
+        <div class="main-book">
+            <div class="card-first">
+                <img class="book-img" src="{{'data:image/jpg;base64,' + bookmodel.cover}}" alt="Cover Image"/>
+                <div class="card-third">
+                    <p>Reviews: {{ bookmodel.reviews.length }}</p>
+                    <p>Rating: {{ bookmodel.rating }}</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-second">
+                    <div>
+                        <h2 class="title-label">{{ bookmodel.title }}</h2>
+                    </div>
+                    <div>
+                        <p class="author-label">{{ bookmodel.author }}, {{ bookmodel.genre }}</p>
+                    </div>
+                    <div>
+                        <p class="content">{{ bookmodel.content }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+
+    <div class="review-table">
+        <div *ngFor="let review of bookmodel.reviews">
+            <div class="review">
+                <div>
+                    <h2>{{ review.reviewer }}</h2>
+                </div>
+                <div>
+                    <p>{{ review.message }}</p>
+                </div>
+                <hr>
+            </div>
+        </div>
+    </div>
+</div>

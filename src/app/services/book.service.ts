@@ -11,7 +11,15 @@ export class BookService{
         return this.http.post('api/books/save', book);
     }
 
-    getBooks() {
+    getAllBooks() {
         return this.http.get('api/books');
+    }
+
+    getRecommendedBooks(){
+        return this.http.get('api/recommended');
+    }
+
+    getBookById(id: number) {
+        return this.http.get('api/books/' + id);
     }
 }
