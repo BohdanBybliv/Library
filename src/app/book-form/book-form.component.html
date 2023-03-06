@@ -38,22 +38,6 @@
                     <input type="text" class="form-control" name="author" [(ngModel)]="book.author" />
                 </div>
             </div>
-            <!-- <div class="form-group">
-                <label>Title</label>
-                <input class="form-control" name="title" [(ngModel)]="book.title" />
-            </div> -->
-            <!-- <div class="form-group">
-                <label>Cover</label>
-                <input type="file" class="form-control" (change)="picked($event)" name="cover" accept="image/png, image/jpeg" [(ngModel)]="book.cover">
-            </div> -->
-            <!-- <div class="form-group">
-                <label>Genre</label>
-                <input class="form-control" name="genre" [(ngModel)]="book.genre" />
-            </div> -->
-            <!-- <div class="form-group">
-                <label>Author</label>
-                <input class="form-control" name="author" [(ngModel)]="book.author" />
-            </div> -->
         </div>
         
         <div class="form-group" id="content">
@@ -93,8 +77,8 @@
                             <h4 class="title-label">{{ book.title }}</h4>
                         </div>
                         <div class="book-buttons">
-                            <button class="details" (click)="details(book.id)"><i class="material-icons">pageview</i></button>
-                            <button class="edit" (click)="edit(book.id)"><i class="material-icons">edit</i></button>
+                            <i class="material-icons" (click)="details(book.id)">pageview</i>
+                            <i class="material-icons" (click)="edit(book.id)">edit</i>
                         </div>
                     </div>
                     <div class="card-third">
@@ -103,62 +87,8 @@
                     </div>
                 </div>
                 
-                <!-- <div class="card card-fourth">
-                    <div>
-                        <button class="details" (click)="saveBook()"><i class="material-icons">pageview</i></button>
-                        <button class="edit" (click)="saveBook()"><i class="material-icons">edit</i></button>
-                    </div>
-                </div> -->
             </div>
         </div>
         
     </div>
 </div>
-
-
-<!-- <div *ngFor="let book of bookmodels">
-    <div class="books-container">
-        <div class="book">
-            <div class="card card-first">
-                <img src="{{'data:image/jpg;base64,' + book.cover}}"/>
-            </div>
-            <div class="card card-second">
-                <p class="title-label">{{ book.title }}</p>
-            </div>
-            <div class="card card-third">
-                <p>Reviews: {{ book.reviewsNumber }}</p>
-                <p>Rating: {{ book.rating }}</p>
-            </div>
-            <div class="card card-fourth">
-                <div>
-                    <button class="details" (click)="saveBook()"><i class="material-icons">pageview</i></button>
-                    <button class="edit" (click)="saveBook()"><i class="material-icons">edit</i></button>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-</div> -->
-
-<!-- <table *ngIf="bookmodels">
-    <thead>
-        <tr>
-            <th>Id</th>
-            <th>Cover</th>
-            <th>Title</th>
-            <th>Author</th>
-            <th>Rating</th>
-            <th>Reviews</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let book of bookmodels">
-            <td>{{ book.id }}</td>
-            <td><img src="{{'data:image/jpg;base64,' + book.cover}}" style="height: 50px;"/></td>
-            <td>{{ book.title }}</td>
-            <td>{{ book.author }}</td>
-            <td>{{ book.rating }}</td>
-            <td>{{ book.reviewsNumber }}</td>
-        </tr>
-    </tbody>
-</table>  -->

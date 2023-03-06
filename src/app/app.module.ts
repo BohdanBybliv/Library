@@ -7,12 +7,14 @@ import { BookFormComponent } from './book-form/book-form.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BookDetailsComponent } from './book-details/book-details.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { ReviewFormComponent } from './review-form/review-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BookFormComponent,
-    BookDetailsComponent
+    BookDetailsComponent,
+    ReviewFormComponent
   ],
   imports: [
     BrowserModule, HttpClientModule, FormsModule, BrowserAnimationsModule, MatDialogModule
