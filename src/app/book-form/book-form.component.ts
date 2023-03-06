@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { BookCreationModel } from '../models/book-creation.model';
 import { BookModel } from '../models/book.model';
 import { BookService } from '../services/book.service';
@@ -18,11 +17,7 @@ export class BookFormComponent {
   bookmodels: BookModel[] = [];
 
   formLabel: string = "Add Book";
-  //imageSource: any;
-  //imageSrc;
-  //imageFile: any;
   
-  //base64s
   imageString: string = "";
 
   constructor(private bookService: BookService,
@@ -69,7 +64,7 @@ export class BookFormComponent {
       data: {
         bookId: bookId
       }
-    })
+    }).afterClosed().subscribe(()=>this.loadAllBooks());
   }
 
   edit(bookId: number){
@@ -85,7 +80,6 @@ export class BookFormComponent {
     let fileList: FileList = event.target.files;
     if (fileList.length > 0) {
       const file: File = fileList[0];
-      //this.imageFile = file;
       this.handleInputChange(file); //turn into base64
     }
   }
@@ -104,7 +98,6 @@ export class BookFormComponent {
   _handleReaderLoaded(e: { target: any; }) {
     let reader = e.target;
     var base64result = reader.result.substr(reader.result.indexOf(',') + 1);
-    //this.imageSrc = base64result;
     this.imageString = base64result;
   }
 }
